@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import projectAuthority,ProjectInformation,Deliverable,project_detail,Resource
-from .serializer import ProjectInformationSerializer,DeliverableSerializer,ProjectAuthoritySerializer,ProjectDetailSerializers,ResourceSerializer
+from .serializer import ProjectInformationSerializer,DeliverableSerializer,projectAuthoritySerializer,ProjectDetailSerializers,ResourceSerializer
 
 class ProjectInformationListCreateAPIView(generics.ListCreateAPIView):
     queryset = ProjectInformation.objects.all()
