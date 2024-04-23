@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
@@ -39,3 +40,13 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
+=======
+
+# Create your models here.
+class User(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    password = models.CharField(max_length=200)
+
+    
+>>>>>>> d4b30990d1f4c30bb086f2dc6b0cd641d04a4b40
