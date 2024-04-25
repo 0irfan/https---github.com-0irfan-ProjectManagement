@@ -1,20 +1,5 @@
 from django.db import models
-<<<<<<< HEAD
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
-
-class User(AbstractBaseUser):
-    name = models.CharField(max_length=200, null=False)
-    email = models.EmailField(max_length=200, null=False, unique=True)
-    password = models.CharField(max_length=200, null=False)
-    
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-
-
-    def __str__(self):
-        return self.email
-
 
 class UserManager(BaseUserManager):
     def create_user(self, email, name, password=None):
@@ -40,13 +25,29 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
-=======
 
-# Create your models here.
-class User(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200)
-    password = models.CharField(max_length=200)
+
+class User(AbstractBaseUser):
+    name = models.CharField(max_length=200, null=False)
+    email = models.EmailField(max_length=200, null=False, unique=True)
+    password = models.CharField(max_length=200, null=False)
+    
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
+    objects = UserManager()
+    
+
+
+
+    def __str__(self):
+        return self.email
+
+
+
+
+
 
     
->>>>>>> d4b30990d1f4c30bb086f2dc6b0cd641d04a4b40
+
